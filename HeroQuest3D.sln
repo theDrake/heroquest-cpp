@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HeroQuest3D", "HeroQuest3D\HeroQuest3D.vcxproj", "{92E8F325-2EEB-4C3C-B8B6-BEB00F19774F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92E8F325-2EEB-4C3C-B8B6-BEB00F19774F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{92E8F325-2EEB-4C3C-B8B6-BEB00F19774F}.Debug|Win32.Build.0 = Debug|Win32
+		{92E8F325-2EEB-4C3C-B8B6-BEB00F19774F}.Release|Win32.ActiveCfg = Release|Win32
+		{92E8F325-2EEB-4C3C-B8B6-BEB00F19774F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
