@@ -1,12 +1,12 @@
-//*****************************************************************************
-//    Filename: Quest.cpp
-//
-//      Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Definition of a 'Quest' class responsible for managing all
-//              aspects of a given quest, including it's associated cells,
-//              NPCs, traps, items, events, etc.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Quest.cpp
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Definition of a 'Quest' class responsible for managing all aspects
+             of a given quest, including its associated location, NPCs, traps,
+             items, events, etc.
+******************************************************************************/
 
 #include "Quest.h"
 

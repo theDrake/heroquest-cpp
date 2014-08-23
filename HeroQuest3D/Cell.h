@@ -1,11 +1,11 @@
-//*****************************************************************************
-//	  Filename: Cell.h
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Declaration of a 'Cell' class, corresponding to a single cube
-//				      of space within a 3D environment.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Cell.h
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Declaration of a 'Cell' class, corresponding to a single cube of
+             space within a 3D environment.
+******************************************************************************/
 
 #ifndef CELL_H
 #define CELL_H

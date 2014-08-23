@@ -1,10 +1,10 @@
-//*****************************************************************************
-//	  Filename: Item.cpp
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Definition of an 'Item' class.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Item.cpp
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Definition of an 'Item' class.
+******************************************************************************/
 
 #include "Item.h"
 

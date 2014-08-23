@@ -1,12 +1,12 @@
-//*****************************************************************************
-//	  Filename: Quest.h
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Declaration of a 'Quest' class responsible for managing all
-//				      aspects of a given quest, including it's associated location,
-//				      NPCs, traps, items, events, etc.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Quest.h
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Declaration of a 'Quest' class responsible for managing all
+             aspects of a given quest, including its associated location, NPCs,
+             traps, items, events, etc.
+******************************************************************************/
 
 #ifndef QUEST_H
 #define QUEST_H

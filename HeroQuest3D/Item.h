@@ -1,10 +1,10 @@
-//*****************************************************************************
-//	  Filename: Item.h
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Declaration of an 'Item' class.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Item.h
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Declaration of an 'Item' class.
+******************************************************************************/
 
 #ifndef ITEM_H
 #define ITEM_H

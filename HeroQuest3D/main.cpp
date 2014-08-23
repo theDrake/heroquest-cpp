@@ -1,12 +1,13 @@
-//*****************************************************************************
-//	  Filename: main.cpp
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Main file for "HeroQuest 3D": a simple 3D action-adventure game
-//				      based on the board game "HeroQuest" by Milton Bradley and Games
-//				      Workshop. (Still in early stages of development.)
-//*****************************************************************************
+/******************************************************************************
+   Filename: main.cpp
+
+     Author: David C. Drake (http://davidcdrake.com), with initial assistance
+             from Dr. Barton Stander (http://cit.dixie.edu/faculty/stander.php)
+
+Description: Main file for "HeroQuest 3D," a simple 3D action-adventure game
+             based on the board game "HeroQuest" by Milton Bradley and Games
+             Workshop.
+******************************************************************************/
 
 #include "main.h"
 

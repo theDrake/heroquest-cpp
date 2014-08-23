@@ -1,11 +1,11 @@
-//*****************************************************************************
-//	  Filename: Cell.cpp
-//
-//	    Author: David C. Drake (www.davidcdrake.com)
-//
-// Description: Definition of a 'Cell' class, corresponding to a single cube of
-//				      space within a 3D environment.
-//*****************************************************************************
+/******************************************************************************
+   Filename: Cell.cpp
+
+     Author: David C. Drake (http://davidcdrake.com)
+
+Description: Definition of a 'Cell' class, corresponding to a single cube of
+             space within a 3D environment.
+******************************************************************************/
 
 #include "Cell.h"
 
