@@ -8,20 +8,14 @@ Description: Definition of an 'Item' class.
 
 #include "Item.h"
 
-Item::Item(int type)
-{
+Item::Item(int type) {
   type_ = type;
 }
 
-Item::~Item()
-{}
+Item::~Item() {}
 
-int Item::getType()
-{
+int Item::getType() {
   return type_;
 }
 
-void Item::draw()
-{
-
-}
+void Item::draw() {}

@@ -207,7 +207,7 @@ gliReadTGA(FILE *fp, char *name)
     sprintf(error, "TGA: Cannot read footer from \"%s\"", name);
     if (verbose) printf("%s\n", error);
     return NULL;
-  }  
+  }
 
   /* Check the signature. */
   if (memcmp(tgaFooter.signature, TGA_SIGNATURE,
@@ -226,7 +226,7 @@ gliReadTGA(FILE *fp, char *name)
 
   if (verbose && tgaHeader.idLength) {
     char *idString = (char*) malloc(tgaHeader.idLength);
-    
+
     if (fread(idString, tgaHeader.idLength, 1, fp) != 1) {
       sprintf(error, "TGA: Cannot read ID field in \"%s\"", name);
       printf("%s\n", error);
@@ -242,7 +242,7 @@ gliReadTGA(FILE *fp, char *name)
       return NULL;
     }
   }
-  
+
   /* Reassemble the multi-byte values correctly, regardless of
      host endianness. */
   width = (tgaHeader.widthHi << 8) | tgaHeader.widthLo;
@@ -419,7 +419,7 @@ gliReadTGA(FILE *fp, char *name)
           ftell(fp), width);
       }
       return NULL;
-    }  
+    }
 
     if (horzrev) {
       /* We need to mirror row horizontally. */

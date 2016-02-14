@@ -6,18 +6,17 @@
 Description: Declaration of an 'Item' class.
 ******************************************************************************/
 
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef ITEM_H_
+#define ITEM_H_
 
-class Item
-{
-public:
-	Item(int type);
-	~Item();
-	int getType();
-	void draw();
-private:
-	int type_;
+class Item {
+ public:
+  Item(int type);
+  ~Item();
+  int getType();
+  void draw();
+ private:
+  int type_;
 };
 
-#endif
+#endif  // ITEM_H_

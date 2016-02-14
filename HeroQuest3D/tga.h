@@ -2,27 +2,21 @@
 #define __tga_h__
 
 /* tga.h - interface for TrueVision (TGA) image file loader */
-
-/* Copyright NVIDIA Corporation, 1999. */
-
+/* Copyright NVIDIA Corporation, 1999.                      */
 /* A lightweight TGA image file loader for OpenGL programs. */
 
 #include <stdio.h>
 #include "glut.h"
 
 typedef struct {
-
   GLsizei  width;
   GLsizei  height;
   GLint    components;
   GLenum   format;
-
   GLsizei  cmapEntries;
   GLenum   cmapFormat;
   GLubyte *cmap;
-
   GLubyte *pixels;
-  
 } gliGenericImage;
 
 typedef struct {
@@ -39,8 +33,8 @@ typedef struct {
   unsigned char imageType;
 
   /* Color Map Specification. */
-  /* We need to separately specify high and low bytes to avoid endianness
-     and alignment problems. */
+  /* We need to separately specify high and low bytes to avoid endianness and
+     alignment problems. */
   unsigned char colorMapIndexLo, colorMapIndexHi;
   unsigned char colorMapLengthLo, colorMapLengthHi;
   unsigned char colorMapSize;
@@ -79,4 +73,4 @@ typedef struct {
 extern gliGenericImage *gliReadTGA(FILE *fp, char *name);
 extern int gliVerbose(int newVerbose);
 
-#endif /* __tga_h__ */
+#endif  /* __tga_h__ */

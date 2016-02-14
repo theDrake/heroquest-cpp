@@ -24,8 +24,7 @@ Description: Definition of a 'Quest' class responsible for managing all aspects
 //
 //     Outputs: None.
 //-----------------------------------------------------------------------------
-Quest::Quest(int questNo, int width, int height, int perspective)
-{
+Quest::Quest(int questNo, int width, int height, int perspective) {
   initialize(questNo, width, height, perspective);
 }
 
@@ -38,8 +37,7 @@ Quest::Quest(int questNo, int width, int height, int perspective)
 //
 //     Outputs: None.
 //-----------------------------------------------------------------------------
-Quest::~Quest()
-{
+Quest::~Quest() {
   cells_.clear();
   characters_.clear();
 }
@@ -58,27 +56,21 @@ Quest::~Quest()
 //
 //     Outputs: None.
 //-----------------------------------------------------------------------------
-void Quest::initialize(int questNo, int width, int height, int perspective)
-{
-  questNo_     = questNo;
-  width_       = width;
-  height_      = height;
+void Quest::initialize(int questNo, int width, int height, int perspective) {
+  questNo_ = questNo;
+  width_ = width;
+  height_ = height;
   perspective_ = perspective;
-
   initializeCells();
   removeWalls(0, 0);
   setStartAndFinish();
 
   // Remove ceiling tiles (if desired):
-  if (false)
-  {
-    for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i)
-    {
-      for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j)
-      {
+  if (false) {
+    for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i) {
+      for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j) {
         int cellIndex = i + j * width_;
-        if (cellIndex < 0 || cellIndex > cells_.size())
-        {
+        if (cellIndex < 0 || cellIndex > cells_.size()) {
           continue;
         }
         cells_[cellIndex]->removeWall(TOP);
@@ -88,25 +80,22 @@ void Quest::initialize(int questNo, int width, int height, int perspective)
 
   // Set default textures:
   int t = 0 + TEXTURE_OFFSET_PER_QUEST * (questNo - 1);
-  for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i)
-  {
-    for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j)
-    {
+  for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i) {
+    for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j) {
       // Set north, south, east, and west wall textures:
-      for (int side = 0; side < 4; ++side)
-      {
+      for (int side = 0; side < 4; ++side) {
         cells_[i + j * width_]->setTexture(side, getTextureNo(t));
       }
 
-      // Set the floor texture:
+      // Set floor texture:
       cells_[i + j * width_]->setTexture(BOTTOM, getTextureNo(t + 1));
 
-      // Set the ceiling texture:
+      // Set ceiling texture:
       cells_[i + j * width_]->setTexture(TOP, getTextureNo(t + 2));
     }
   }
 
-  // Set the start and finish door textures:
+  // Set start and finish door textures:
   cells_[startX_]->setTexture(SOUTH, getTextureNo(t + 3));
   cells_[finishX_ + (height_ - 1) * width_]->setTexture(NORTH,
                                                         getTextureNo(t + 3));
@@ -125,25 +114,20 @@ void Quest::initialize(int questNo, int width, int height, int perspective)
 //
 //     Outputs: The number of cells created.
 //-----------------------------------------------------------------------------
-int Quest::initializeCells()
-{
+int Quest::initializeCells() {
   int nCells = 0;
 
   cells_.clear();
-  for (int i = 0; i < width_; ++i)
-  {
-    for (int j = 0; j < height_; ++j)
-    {
+  for (int i = 0; i < width_; ++i) {
+    for (int j = 0; j < height_; ++j) {
       cells_.push_back(new Cell());
       ++nCells;
     }
   }
 
   // Assign each cell a pointer to each of its neighbors:
-  for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i)
-  {
-    for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j)
-    {
+  for (int i = 0; i < DEFAULT_MAZE_WIDTH; ++i) {
+    for (int j = 0; j < DEFAULT_MAZE_HEIGHT; ++j) {
       assignNeighbors(i, j);
     }
   }
@@ -162,13 +146,11 @@ int Quest::initializeCells()
 //
 //     Outputs: The number of NPCs created.
 //-----------------------------------------------------------------------------
-int Quest::initializeCharacters()
-{
+int Quest::initializeCharacters() {
   int nCharacters = 0;
 
   characters_.clear();
-  for (int i = 0; i < DEFAULT_NUM_NPCS; ++i)
-  {
+  for (int i = 0; i < DEFAULT_NUM_NPCS; ++i) {
     characters_.push_back(new Character(GOBLIN, this));
     ++nCharacters;
   }
@@ -187,37 +169,30 @@ int Quest::initializeCharacters()
 //     Outputs: The number of neighbors assigned, or -1 if the arguments are
 //              invalid.
 //-----------------------------------------------------------------------------
-int Quest::assignNeighbors(int x, int y)
-{
+int Quest::assignNeighbors(int x, int y) {
   int nNeighbors = 0;
 
-  if (x < 0 || y < 0 || x >= DEFAULT_MAZE_WIDTH || y >= DEFAULT_MAZE_HEIGHT)
-  {
+  if (x < 0 || y < 0 || x >= DEFAULT_MAZE_WIDTH || y >= DEFAULT_MAZE_HEIGHT) {
     return -1;
   }
 
-  for (int i = 0; i < 4; ++i)
-  {
-    if (x - 1 >= 0)
-    {
+  for (int i = 0; i < 4; ++i) {
+    if (x - 1 >= 0) {
       cells_[x + y * width_]->setNeighbor(WEST,
                                           cells_[x - 1 + y * width_]);
       ++nNeighbors;
     }
-    if (x + 1 < DEFAULT_MAZE_WIDTH)
-    {
+    if (x + 1 < DEFAULT_MAZE_WIDTH) {
       cells_[x + y * width_]->setNeighbor(EAST,
                                           cells_[x + 1 + y * width_]);
       ++nNeighbors;
     }
-    if (y - 1 >= 0)
-    {
+    if (y - 1 >= 0) {
       cells_[x + y * width_]->setNeighbor(SOUTH,
                                           cells_[x + (y - 1) * width_]);
       ++nNeighbors;
     }
-    if (y + 1 < DEFAULT_MAZE_HEIGHT)
-    {
+    if (y + 1 < DEFAULT_MAZE_HEIGHT) {
       cells_[x + y * width_]->setNeighbor(NORTH,
                                           cells_[x + (y + 1) * width_]);
       ++nNeighbors;
@@ -237,35 +212,30 @@ int Quest::assignNeighbors(int x, int y)
 //
 //     Outputs: 0 if successful, -1 if the arguments are invalid.
 //-----------------------------------------------------------------------------
-int Quest::removeWalls(int i, int j)
-{
+int Quest::removeWalls(int i, int j) {
   int wall, cellIndex = i + j * width_;
 
-  if (i < 0 || j < 0 || i >= DEFAULT_MAZE_WIDTH || j >= DEFAULT_MAZE_HEIGHT)
-  {
+  if (i < 0 || j < 0 || i >= DEFAULT_MAZE_WIDTH || j >= DEFAULT_MAZE_HEIGHT) {
     return -1;
   }
 
   cells_[cellIndex]->setVisited(true);
-
-  while((wall = cells_[cellIndex]->removeRandomWall()) >= 0)
-  {
-    switch(wall)
-    {
-    case NORTH:
-      removeWalls(i, j + 1);
-      break;
-    case SOUTH:
-      removeWalls(i, j - 1);
-      break;
-    case EAST:
-      removeWalls(i + 1, j);
-      break;
-    case WEST:
-      removeWalls(i - 1, j);
-      break;
-    default:
-      break;
+  while ((wall = cells_[cellIndex]->removeRandomWall()) >= 0) {
+    switch (wall) {
+      case NORTH:
+        removeWalls(i, j + 1);
+        break;
+      case SOUTH:
+        removeWalls(i, j - 1);
+        break;
+      case EAST:
+        removeWalls(i + 1, j);
+        break;
+      case WEST:
+        removeWalls(i - 1, j);
+        break;
+      default:
+        break;
     }
   }
 
@@ -283,9 +253,8 @@ int Quest::removeWalls(int i, int j)
 //
 //     Outputs: None.
 //-----------------------------------------------------------------------------
-void Quest::setStartAndFinish()
-{
-  startX_  = rand() % width_;
+void Quest::setStartAndFinish() {
+  startX_ = rand() % width_;
   finishX_ = rand() % width_;
 }
 
@@ -298,8 +267,7 @@ void Quest::setStartAndFinish()
 //
 //     Outputs: The newly assigned player pointer.
 //-----------------------------------------------------------------------------
-Character* Quest::setPlayer(Character* player)
-{
+Character *Quest::setPlayer(Character *player) {
   return player_ = player;
 }
 
@@ -313,8 +281,7 @@ Character* Quest::setPlayer(Character* player)
 //
 //     Outputs: The newly assigned perspective value.
 //-----------------------------------------------------------------------------
-int Quest::setPerspective(int perspective)
-{
+int Quest::setPerspective(int perspective) {
   return perspective_ = perspective;
 }
 
@@ -328,8 +295,7 @@ int Quest::setPerspective(int perspective)
 //
 //     Outputs: An integer representing the current perspective.
 //-----------------------------------------------------------------------------
-int Quest::getPerspective() const
-{
+int Quest::getPerspective() const {
   return perspective_;
 }
 
@@ -342,8 +308,7 @@ int Quest::getPerspective() const
 //
 //     Outputs: The quest location's width (i.e., no. of cell columns).
 //-----------------------------------------------------------------------------
-int Quest::getWidth() const
-{
+int Quest::getWidth() const {
   return width_;
 }
 
@@ -356,8 +321,7 @@ int Quest::getWidth() const
 //
 //     Outputs: The quest location's height (i.e., no. of cell rows).
 //-----------------------------------------------------------------------------
-int Quest::getHeight() const
-{
+int Quest::getHeight() const {
   return height_;
 }
 
@@ -370,8 +334,7 @@ int Quest::getHeight() const
 //
 //     Outputs: The x-coordinate of the quest's start location.
 //-----------------------------------------------------------------------------
-int Quest::getStartX() const
-{
+int Quest::getStartX() const {
   return startX_;
 }
 
@@ -384,8 +347,7 @@ int Quest::getStartX() const
 //
 //     Outputs: The x-coordinate of the quest's finish location.
 //-----------------------------------------------------------------------------
-int Quest::getFinishX() const
-{
+int Quest::getFinishX() const {
   return finishX_;
 }
 
@@ -403,50 +365,40 @@ int Quest::getFinishX() const
 //
 //     Outputs: Returns 'true' if the position is legal, 'false' otherwise.
 //-----------------------------------------------------------------------------
-bool Quest::isLegalPosition(double x, double y, double radius) const
-{
-  int cellIndex  = (int) x + ((int) y) * width_;
+bool Quest::isLegalPosition(double x, double y, double radius) const {
+  int cellIndex = (int) x + ((int) y) * width_;
   double offsetX = x - (int) x;
   double offsetY = y - (int) y;
 
-  if (y < 0         ||
-      y > height_   ||
-      x < 0         ||
-      x > width_    ||
-      cellIndex < 0 ||
-      cellIndex > cells_.size())
-  {
+  if (y < 0 || y > height_ || x < 0 || x > width_ || cellIndex < 0 ||
+      cellIndex > cells_.size()) {
     return false;
   }
 
   // Test north wall:
-  if (cells_[cellIndex]->hasWallAt(NORTH) && offsetY + radius > 1.0)
-  {
+  if (cells_[cellIndex]->hasWallAt(NORTH) && offsetY + radius > 1.0) {
     return false;
   }
 
   // Test south wall:
-  if (cells_[cellIndex]->hasWallAt(SOUTH) && offsetY - radius < 0.0)
-  {
+  if (cells_[cellIndex]->hasWallAt(SOUTH) && offsetY - radius < 0.0) {
     return false;
   }
 
   // Test east wall:
-  if (cells_[cellIndex]->hasWallAt(EAST) && offsetX + radius > 1.0)
-  {
+  if (cells_[cellIndex]->hasWallAt(EAST) && offsetX + radius > 1.0) {
     return false;
   }
 
   // Test west wall:
-  if (cells_[cellIndex]->hasWallAt(WEST) && offsetX - radius < 0.0)
-  {
+  if (cells_[cellIndex]->hasWallAt(WEST) && offsetX - radius < 0.0) {
     return false;
   }
 
   // Test corners:
   /*if (offsetX + radius > 1.0 && offsetY - radius < 0.0)
   {
-    return false;
+  return false;
   }*/
 
   return true;
@@ -462,24 +414,18 @@ bool Quest::isLegalPosition(double x, double y, double radius) const
 //
 //     Outputs: None.
 //-----------------------------------------------------------------------------
-void Quest::draw()
-{
-  for (int i = 0; i < width_; ++i)
-  {
-    for (int j = 0; j < height_; ++j)
-    {
+void Quest::draw() {
+  for (int i = 0; i < width_; ++i) {
+    for (int j = 0; j < height_; ++j) {
       int cellIndex = i + j * width_;
-      if (cellIndex < 0 || cellIndex > cells_.size())
-      {
+      if (cellIndex < 0 || cellIndex > cells_.size()) {
         continue;
       }
       cells_[cellIndex]->draw(i, j, perspective_);
     }
   }
-
-  vector<Character*>::iterator iter;
-  for (iter = characters_.begin(); iter < characters_.end(); ++iter)
-  {
+  vector<Character *>::iterator iter;
+  for (iter = characters_.begin(); iter < characters_.end(); ++iter) {
     (*iter)->act(player_);
     (*iter)->draw();
   }
