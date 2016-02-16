@@ -36,18 +36,18 @@ class Character {
   Character(int type, Quest *quest);
   ~Character();
   void initialize(int type, Quest *quest);
-  int getType() const;
-  double getX() const;
-  double getY() const;
-  double getZ() const;
-  double getHeight() const;
-  double getRotation() const;
-  double getRotationRate() const;
-  double getmovementRate() const;
-  double getjumpRate() const;
-  double getRed() const;
-  double getGreen() const;
-  double getBlue() const;
+  int getType() const { return type_; }
+  double getX() const { return x_; }
+  double getY() const { return y_; }
+  double getZ() const { return z_; }
+  double getHeight() const { return height_; }
+  double getRotation() const { return rotation_; }
+  double getRotationRate() const { return rotationRate_; }
+  double getmovementRate() const { return movementRate_; }
+  double getjumpRate() const { return jumpRate_; }
+  double getRed() const { return red_; }
+  double getGreen() const { return green_; }
+  double getBlue() const { return blue_; }
   double getNextX() const;
   double getNextY() const;
   double getNextZ() const;
