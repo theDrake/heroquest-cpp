@@ -447,22 +447,22 @@ void initializeMyStuff() {
   int n = 0;
 
     // Quest 1:
-  image[n++] = readImage("../textures/BrickMessy0102_17_S.tga");
-  image[n++] = readImage("../textures/Gravel0134_19_S.tga");
-  image[n++] = readImage("../textures/RockSmooth0133_9_S.tga");
-  image[n++] = readImage("../textures/WoodStudded0042_5_S.tga");
+  image[n++] = readImage("textures/BrickMessy0102_17_S.tga");
+  image[n++] = readImage("textures/Gravel0134_19_S.tga");
+  image[n++] = readImage("textures/RockSmooth0133_9_S.tga");
+  image[n++] = readImage("textures/WoodStudded0042_5_S.tga");
 
     // Quest 2:
-  image[n++] = readImage("../textures/Bones0031_5_S.tga");
-  image[n++] = readImage("../textures/BrickRound0043_14_S.tga");
-  image[n++] = readImage("../textures/TilesSmall0070_5_S.tga");
-  image[n++] = readImage("../textures/WoodStudded0029_7_S.tga");
+  image[n++] = readImage("textures/Bones0031_5_S.tga");
+  image[n++] = readImage("textures/BrickRound0043_14_S.tga");
+  image[n++] = readImage("textures/TilesSmall0070_5_S.tga");
+  image[n++] = readImage("textures/WoodStudded0029_7_S.tga");
 
     // Quest 3:
-  image[n++] = readImage("../textures/MarbleWhite0035_2_S.tga");
-  image[n++] = readImage("../textures/SandPebbles0054_1_S.tga");
-  image[n++] = readImage("../textures/MarbleWhite0067_49_S.tga");
-  image[n++] = readImage("../textures/WoodStudded0035_2_S.tga");
+  image[n++] = readImage("textures/MarbleWhite0035_2_S.tga");
+  image[n++] = readImage("textures/SandPebbles0054_1_S.tga");
+  image[n++] = readImage("textures/MarbleWhite0067_49_S.tga");
+  image[n++] = readImage("textures/WoodStudded0035_2_S.tga");
 
   if (n != NUM_TEXTURES) {
     cerr << "Error: expected " << NUM_TEXTURES << " textures, loaded " << n
